@@ -1,0 +1,23 @@
+0→Y
+"1)AFFICHER LA PRECISION
+ 2)RECOMMENCER"?→Y
+Y=1⇒Goto P
+1→A
+2→B
+Lbl P
+"VOIR DETAILS?1 POUR OUI   2 POUR NON"?→X
+Lbl 0
+ClrText
+A+B→C
+C%B→E
+"NBRE D OR="
+E◢
+X=2⇒Goto F
+"FORMULE :"
+C◢
+"------------"
+B◢
+Lbl F
+B→A
+C→B
+Goto 0
