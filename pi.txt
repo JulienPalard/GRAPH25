@@ -1,0 +1,6 @@
+10⇒A
+Lbl 0
+(A×sin (180%A)))→B
+B◢
+A+1→A
+Goto 0
