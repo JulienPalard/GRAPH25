@@ -1,0 +1,294 @@
+"VERSION 1.3
+     BY
+ MANDARK"◢
+ClrText
+Lbl P
+10→A~U
+0→V~Z
+0→G~H
+0→D
+0→P
+100→X~Y
+Lbl A
+10+4×(Int (√P)%2)→K
+ClrText
+"1→STATS
+ 2→ACHETER
+ 3→SORTIR
+ 4→SAVE
+ 5→LOAD"?→Z
+Z=2⇒Goto 2
+Z=3⇒Goto H
+Z=4⇒Goto I
+Z=5⇒Goto J
+ClrText
+"FEUILLE DE
+ STATS :"◢
+Int (√P)×2+10→F
+ClrText
+"XP"
+P◢
+"LVL"
+Int ((√P)%2)+1◢
+ClrText
+"OR"
+A◢
+ClrText
+"DEGATS"
+F+G◢
+ClrText
+"VIE MAX"
+10+Int ((√P)%2)◢
+ClrText
+"ARMURE"
+H◢
+ClrText
+"ARME"
+G◢
+ClrText
+"DEXT"
+D◢
+ClrText
+"FORCE"
+F◢
+ClrText
+Goto A
+Lbl I
+"CODE 1"
+(((P×3+1)×4+1)×5+9→Z◢
+ClrText
+"CODE 2"
+-P+(((A×2+6)×5+3)×5+8→Z◢
+"CODE 3"
+-A+(((D×9+7)×9+3)×2+3→Z◢
+"CODE 4"
+-D+(((G×8+4)×6+2)×6+4→Z◢
+"CODE 5"
+-G+(((H×3+3)×8+3)×2+7→Z◢
+"CODE 6"
+3((((P×3+1)×4+1)×5+9)-((((A×2+6)×5+3)×5+8)+4×((((D×9+7)×9+3)×2+3)-6×((((G×8+4)×6+2)×6+4)+((((H×3+3)×8+3)×2+7◢
+Goto A
+Lbl J
+"ENTREZ LE
+ CODE 1"?→P
+"ENTREZ LE
+ CODE 2"?→A
+"ENTREZ LE
+ CODE 3"?→D
+"ENTEZ LE
+ CODE 4"?→G
+"ENTREZ LE
+ CODE 5"?→H
+"ENTREZ LE
+ CODE 6"?→Z
+(((P-9)%5-1)%4-1)%3→P
+(((A-8+P)%5-3)%5-6)%2→A
+(((D+A-3)%2-3)%9-7)%9→D
+(((G+D-4)%6-2)%6-4)%8→G
+(((H+G-7)%2-3)%8-3)%3→H
+Int A ≠ A⇒3.14→Z
+Int P ≠ P⇒3.14→Z
+Int D ≠ D⇒3.14→Z
+Int G ≠ G⇒3.14→Z
+Int H ≠ H⇒3.14→Z
+(3×((((P×3+1)×4+1)×5+9)-((((A×2+6)×5+3)×5+8)+4×((((D×9+7)×9+3)×2+3)-6×((((G×8+4)×6+2)×6+4)+((((H×3+3)×8+3)×2+7))→T
+Z≠T⇒3.14→Z
+Z=3.14⇒"CHEATEUR"◢
+Z=3.14⇒Goto P
+"VOUS ETES LVL"
+Int ((√P)%2)+1◢
+"VOTRE OR"
+A◢
+Goto A
+Lbl 2
+ClrText
+"1→ARMES
+ 2→ARMURES
+ 3→ENTRAINEMEN"?→Z
+ClrText
+Z=2⇒Goto 5
+Z=3⇒Goto 6
+"VOUS AVEZ
+ DANS VOTRE
+ BOURSE"
+A◢
+"FIXER LE PRIXDE L'ARME"?→Z
+Int Z→Z
+Z>A⇒Goto 2
+Z=0⇒Goto A
+A-Z→A
+(G%4)+A→A
+Int A→A
+Z→G
+"VOTRE ARME TAPE A :"
+G◢
+Goto A
+Lbl 5
+"VOUS AVEZ DANS VOTRE BOURSE"
+A◢
+"FIXEZ UN PRIXPOUR L'ARMURE"?→Z  # Volontary missing space (screen wrap at this point)
+Z>A⇒Goto 2
+Z=0⇒Goto A
+A-(Int Z)→A
+Int ((H-4)+A)→A
+Int (Z%4)→H
+"DEF DE L'ARMURE"
+H◢
+Goto A
+Lbl 6
+"ENTRAINEMENT DEXTERITEE"◢
+"VOUS AVEZ DANS VOTRE BOURSE"
+A◢
+"COMBIEN VOUS DEPENSEZ"
+?→Z
+Int Z→Z
+Z>A⇒Goto 2
+Z=0⇒Goto A
+A-Z→A
+Int A→A
+D+Z→D
+"VOUS VOUS ETES ENTRAINE"◢
+"VOUS AVEZ MAINTENANT"
+D◢
+Goto A
+Lbl 3
+"    COMBAT"
+0→T
+(Int (Ran#(10)+1))→Z
+X>0⇒Y>0⇒(Int(Ran#(5)+1))→Z
+Z=1⇒"PAS DE MOB A COMBATTRE"◢
+Z=1⇒Goto H
+Int (2×(√((X-100)²)+√((Y-100)²))+(Ran#(10)+1))→V
+Int (2×(√((X-100)²)+√((Y-100)²))+(Ran#(10)+1))⇒W
+Int (2×(√((X-100)²)+√((Y-100)²))+(Ran#(10)+1))⇒J
+X>100⇒Y<100⇒1W→W
+X>100⇒Y<100⇒1J→J
+X>100⇒Y<100⇒1V→V
+X<100⇒Y<100⇒4W→W
+X<100⇒Y<100⇒4J→J
+X<100⇒Y<100⇒4V→V
+X<100⇒Y>100⇒8V→V
+X<100⇒Y>100⇒8W→W
+X<100⇒Y>100⇒8J→J
+X>100⇒Y>100⇒20V→V
+X>100⇒Y>100⇒20W→W
+X>100⇒Y>100⇒20J→J
+I=1⇒1234J→I
+I=1⇒1234W→W
+I=1⇒1234V→V
+Int ((V+W+J)%3)→S
+"DEGATS DU MOB"
+W◢
+"VIE DU MOB"
+V◢
+D>J⇒VOUS FRAPPEZ LE PREMIER"
+Lbl 7
+T+1→T
+"TOUR NUM :"
+T◢
+0→Z
+E+Int (√P)≠K⇒"ENTRER 5 POUR FUIRE"?→Z
+Int (Ran#(2)+1)→L
+Z=5⇒L=2⇒"IL VOUS      RATRAPPE"
+Z=5⇒L=1⇒Goto H
+D>J⇒"VIE DU MOB"
+D>J⇒V◢
+D>J⇒Int (((Ran#(.5)+.5)×G)+F)→Z
+D>J⇒V-Z→V
+D>J⇒"VOUS TAPEZ A"
+D>J⇒Z◢
+D>J⇒"VIE DU MOB"
+D>J⇒V◢
+D>J⇒V≤0⇒Goto N
+D>J⇒H≥W⇒"IL NE PASSE  PAS VOTRE     ARMURE"◢
+H≥W⇒3.14→Z
+Z≠3.14⇒D>J⇒"VOTRE VIE"
+Z≠3.14⇒D>J⇒K◢
+Z≠3.14⇒D>J⇒((K+H)-W)→K
+Z≠3.14⇒D>J⇒"VOUS ENCAISSEZ"
+Z≠3.14⇒D>J⇒W-H◢
+Z≠3.14⇒D>J⇒"VOTRE VIE"
+D>J⇒K◢
+D>J⇒K≤0⇒Goto M
+D>J⇒Goto 7
+"VOTRE VIE"
+K◢
+Z≠3.14⇒(K+H)-W→K
+Z=3.14⇒"VOTRE ARMURE PARE"◢
+ClrText
+Z≠3.14⇒"VOUS PERDEZ"
+Z≠3.14⇒W-H◢
+"VOTRE VIE"
+K◢
+K≤0⇒Goto M
+"VIE DU MOB"
+V◢
+Int ((Ran#(.5)+.5)×G+F)→Z
+V-Z→V
+"VOUS FRAPPEZ A"
+Z◢
+"VIE DU MOB"
+V◢
+V≤0⇒Goto N
+Goto 7
+Lbl M
+"VOTRE PIERRE DE DESTINEE VOUS TELEPORT"◢
+100→X~Y
+"VOUS PERDEZ VOTRE OR"◢
+"VOUS AVIEZ"
+A◢
+0→A
+Int (P%2)→P
+"VOUS PERDEZ DE L'XP"
+P◢
+Goto A
+Lbl N
+"COMBAT GAGNE"
+(A+S)→A
+"OR GAGNE :"
+S◢
+Int (S%2)+P→P
+"XP GAGNE"
+Int (S%2)◢
+Lbl H
+ClrText
+"8⇒MONTER
+ 2⇒DESCENDRE
+ 4⇒GAUCHE
+ 6⇒DROITE"?→Z
+Z=6⇒X+1→X
+Z=4⇒X-1→X
+Z=2⇒Y-1→Y
+Z=8⇒Y+1→Y
+X→B
+Y→Z
+ClrText
+K+1→K
+K>E+Int (√P)⇒E+Int (√P)→K
+ViewWindow 60,140,1,50,150,1
+Plot X,Y
+Plot 96,100
+Plot 100,104
+Line
+Plot 100,104
+Plot 104,100
+Line
+Plot 104,100
+Plot 100,96
+Line
+Plot 100,96
+Plot 96,100
+Line
+Plot 108,106
+Plot 110,106
+Line
+Plot 108,106
+Plot 109,107
+Line
+Plot 109,107
+Plot 110,106
+Line◢
+B=109⇒Z=106⇒1→I
+B→X
+Z→YZ=100⇒Y=100⇒Goto A
+Goto 3
